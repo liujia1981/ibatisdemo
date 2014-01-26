@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
+import com.google.gson.Gson;
 import com.kingyee.ibatis.mapper.CmsAdminMapper;
 import com.kingyee.ibatis.mapper.TestMapper;
 import com.kingyee.ibatis.model.CmsAdmin;
@@ -26,7 +27,8 @@ public class App
         SqlSession session = sf.openSession();
         CmsAdminMapper mapper = session.getMapper(CmsAdminMapper.class);
         
-        CmsAdmin m = mapper.selectByPrimaryKey(43);
-        System.out.println(m.getUsername());
+        CmsAdmin m = mapper.selectByPrimaryKey(1);
+        Gson g = new Gson();
+        System.out.println(g.toJson(m));
     }
 }
